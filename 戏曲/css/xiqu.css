@@ -1,0 +1,1338 @@
+* {
+    
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    margin: 0;
+    /* 去掉默认的边距
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(0, 0%, 88%);
+            font-family: Montserrat, sans-serif;
+            line-height: 1.5;
+            background-color: #dde3f1;
+            /* background: linear-gradient(160deg,
+                    #4567b2 20%,
+                    #8ab9ff 20%,
+                    #8ab9ff 80%,
+                    #4567b2 80%); */
+
+    padding-top: 60px;
+    /* 确保内容不被导航栏遮住 */
+}
+
+#nav-1 {
+
+    width: 90%;
+    margin: 0 auto;
+    position: fixed;
+    /* 固定在顶部 */
+    top: 0;
+    /* 设置距离顶部为0 */
+    height: 7%;
+    left: 0;
+    right: 0;
+    border: none;
+    border-radius: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background: #ED1B24;
+    /* 修改背景颜色 */
+    /* box-shadow: 20px 40px 40px #00000033; */
+    padding: 10px;
+    z-index: 10;
+    /* 确保导航栏在最上层 */
+}
+
+#nav-1 li {
+    margin: 0px;
+}
+
+#nav-1 a {
+    position: relative;
+    padding: 0.6em 2em;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: #fff;
+    /* 字体颜色 */
+    display: inline-block;
+    text-decoration: none;
+    z-index: 3;
+}
+
+.slide1,
+.slide2 {
+    position: absolute;
+    display: inline-block;
+    height: 2em;
+    border-radius: 10em;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1.05);
+}
+
+.slide1 {
+    background-color: rgb(17, 19, 19);
+    z-index: 2;
+}
+
+.slide2 {
+    opacity: 0;
+    background: #ddd;
+    z-index: 1;
+}
+
+.squeeze {
+    transform: scale(0.9);
+}
+
+/* // *************************************** Demo stuff */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+
+#nav-1 .nav-image {
+    /* max-height: 100%; */
+    height: 2em;
+    /* 设置图片的高度 */
+    width: auto;
+    /* 自适应宽度 */
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* 确保子元素垂直排列 */
+    justify-content: flex-start;
+    /* 从顶部开始排列 */
+    align-items: center;
+    /* 可以根据需要选择对齐方式 */
+}
+
+/* banner */
+.banner {
+    width: 90%;
+    margin: 0 auto;
+    height: 400px;
+    margin-top:50px;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* 避免图片超出容器 */
+}
+
+/* Swiper 幻灯片 */
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* 确保图片覆盖容器 */
+    /* 如果只想选择图片中间部分，应该把高度也设置为100% */
+}
+
+/* 分页器样式 */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* 分页器小圆点 */
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+.swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+/* 导航箭头样式 */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.swiper-button-next {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-prev {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tabs {
+    /* clear: both;
+	position: relative;    */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    /* 子元素之间均匀分布 */
+    margin-top: 70px;
+    /* max-width: 650px;
+   margin: 0 auto; */
+    /* you can either manually set a min-height here or do it via JS ---> */
+}
+
+.main-box {
+    display: flex;
+    /* 横向排列 */
+    justify-content: space-between;
+    /* 均匀分布 */
+    /* background: #000; */
+    padding: 10px 0;
+    /* 上下内边距 */
+    border-radius: 8px;
+    /* 圆角 */
+}
+
+.box {
+    border-radius: 100px;
+    /* line-height: 6; */
+    box-shadow: 0px 8px 20px #00000022;
+    font-size: 30px;
+    font-family: 'Grape Nuts', cursive;
+    letter-spacing: 5px;
+    color: #fff;
+    width: 150px;
+    height: 130px;
+    overflow: hidden;
+    /* background-image: linear-gradient(to bottom right,
+                    #4d35e5,
+                    #99c0f9,
+                    #bdb6ec,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc); */
+    background-color: #f44851;
+    background-image: linear-gradient(to bottom right,
+            #f91f1f,
+            #fd3d33,
+            #f54845,
+            #f96060,
+            #f97878,
+            #f99696);
+    display: flex;
+    flex-direction: column;
+    /* 纵向排列 */
+    justify-content: center;
+    align-items: center;
+    /* margin-right: 200px; */
+    /* flex: 1; */
+    /* 每个box均分空间 */
+    text-align: center;
+    /* 中心对齐文本 */
+    color: #151515;
+    cursor: pointer;
+    /* 鼠标悬停为手形 */
+    transition: background 0.3s;
+    /* 背景颜色过渡 */
+}
+
+.box:not(:last-child) {
+    margin-right: 100px;
+    /* 最后一个 card 不需要右边距 */
+}
+.box:hover {
+    background: #ead0ef;
+    /* 悬停效果 */
+}
+
+.detail {
+    position: absolute;
+    /* 绝对定位 */
+    top: 450px;
+    /* height: auto; */
+    /* 距离上方的距离 */
+    /* left: 0;
+            right: 0; */
+    background: white;
+    /* 内容背景 */
+    color: black;
+    /* 内容颜色 */
+    opacity: 0;
+    /* 初始隐藏 */
+    margin-top: 170px;
+    padding: 20px;
+    /* 内边距 */
+    box-sizing: border-box;
+    /* 包括内边距 */
+    transition: opacity 0.5s ease-in-out;
+    /* 透明度过渡 */
+    transform: translateY(-20px);
+    /* 初始位移 */
+    border-radius: 8px;
+    /* 圆角 */
+    z-index: 1;
+}
+
+.detail.active {
+    opacity: 1;
+    /* 激活时可见 */
+    transform: translateY(0);
+    /* 移回正常位置 */
+    z-index: 2;
+}
+
+p {
+    line-height: 1.5;
+    /* 行高 */
+}
+
+/* 历史沿革timeline */
+/* .timeline {
+           background-color:#efd0d0;
+        } */
+.timeline h1 {
+    text-align: center;
+    font-family: 'Grape Nuts', cursive;
+}
+
+.timeline ul {
+    --col-gap: 2rem;
+    --row-gap: 2rem;
+    --line-w: 0.25rem;
+    display: grid;
+    grid-template-columns: var(--line-w) 1fr;
+    grid-auto-columns: max-content;
+    column-gap: var(--col-gap);
+    list-style: none;
+
+    width: min(60rem, 90%);
+    margin-inline: auto;
+}
+
+/* line */
+.timeline ul::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1 / span 20;
+    background: rgb(225, 225, 225);
+    border-radius: calc(var(--line-w) / 2);
+}
+
+/* row gaps */
+.timeline ul li:not(:last-child) {
+    margin-bottom: var(--row-gap);
+}
+
+/* card */
+.timeline ul li {
+    grid-column: 2;
+    --inlineP: 1.5rem;
+    margin-inline: var(--inlineP);
+    grid-row: span 2;
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+}
+
+/* date */
+.timeline ul li .date {
+    --dateH: 3rem;
+    height: var(--dateH);
+    margin-inline: calc(var(--inlineP) * -1);
+
+    text-align: center;
+    background-color: var(--accent-color);
+
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    display: grid;
+    place-content: center;
+    position: relative;
+
+    border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
+}
+
+/* date flap */
+.timeline ul li .date::before {
+    content: "";
+    width: var(--inlineP);
+    aspect-ratio: 1;
+    background: var(--accent-color);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent);
+    position: absolute;
+    top: 100%;
+
+    
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    right: 0;
+}
+/* circle */
+.timeline ul li .date::after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    aspect-ratio: 1;
+    background: var(--bgColor);
+    border: 0.3rem solid var(--accent-color);
+    border-radius: 50%;
+    top: 50%;
+
+    transform: translate(50%, -50%);
+    right: calc(100% + var(--col-gap) + var(--line-w) / 2);
+}
+
+/* title descr */
+.timeline ul li .title,
+.timeline ul li .descr {
+    background: var(--bgColor);
+    background-color: #fff;
+    position: relative;
+    padding-inline: 1.5rem;
+}
+
+.timeline ul li .title {
+    overflow: hidden;
+    padding-block-start: 1.5rem;
+    padding-block-end: 1rem;
+    font-weight: 500;
+}
+
+.timeline ul li .descr {
+    padding-block-end: 1.5rem;
+    font-weight: 300;
+
+}
+
+/* shadows */
+.timeline ul li .title::before,
+.timeline ul li .descr::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    border-radius: 50%;
+    filter: blur(4px);
+    transform: translate(-50%, 50%);
+}
+
+.timeline ul li .title::before {
+    bottom: calc(100% + 0.125rem);
+}
+
+.timeline ul li .descr::before {
+    z-index: -1;
+    bottom: 0.25rem;
+}
+
+@media (min-width: 40rem) {
+    .timeline ul {
+        grid-template-columns: 1fr var(--line-w) 1fr;
+    }
+
+    .timeline ul::before {
+        grid-column: 2;
+    }
+
+    .timeline ul li:nth-child(odd) {
+        grid-column: 1;
+    }
+
+    .timeline ul li:nth-child(even) {
+        grid-column: 3;
+    }
+
+    /* start second card */
+    .timeline ul li:nth-child(2) {
+        grid-row: 2/4;
+    }
+
+    .timeline ul li:nth-child(odd) .date::before {
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+        left: 0;
+    }
+
+    .timeline ul li:nth-child(odd) .date::after {
+        transform: translate(-50%, -50%);
+        left: calc(100% + var(--col-gap) + var(--line-w) / 2);
+    }
+
+    .timeline ul li:nth-child(odd) .date {
+        border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+    }
+}
+/* 文化特征 */
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+
+.characters {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+/* 卡片介绍式脸谱无需overlay */
+.overlay {
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    width: 92%;
+    /* height: 50px; */
+    /* position: absolute; */
+    align-items: center;
+    font-size: 45px;
+    font-family: 'Grape Nuts', cursive;
+    color: crimson;
+    text-align: center;
+    margin-top:50px;
+    margin-bottom:-150px;
+}
+
+.card1 {
+    backdrop-filter: blur(5px);
+    min-width: 35vh;
+    height: 55vh;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.051),
+        0px 0px 7.2px rgba(0, 0, 0, 0.073), 0px 0px 13.6px rgba(0, 0, 0, 0.09),
+        0px 0px 24.3px rgba(0, 0, 0, 0.107), 0px 0px 45.5px rgba(0, 0, 0, 0.129),
+        0px 0px 109px rgba(0, 0, 0, 0.18);
+    background-size: cover;
+    ;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card1:not(:last-child) {
+    margin-right: 30px;
+    /* 最后一个 card 不需要右边距 */
+}
+.glare-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.glare {
+    position: absolute;
+    left: 100%;
+    bottom: -50%;
+    width: 150%;
+    height: 150%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0) 20%);
+    transform: rotateZ(35deg);
+    pointer-events: none;
+    filter: blur(4px);
+}
+.card-8 {
+    background-image: url(../images/characters/伴奏乐器总1.png);
+    background-color: rgba(0, 166, 255, 0.3);
+}
+.card2 {
+    min-width: 80vh;
+    height: 55vh;
+}
+.card-9 {
+    background-image: url(../images/characters/伴奏乐器总2.jpg);
+    background-color: rgba(255, 59, 0, 0.37);
+}
+
+.wrapper1 {
+    width: 100%;
+    /* max-width: 1000px; */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* 调整一排几个盒子 */
+    justify-items: center;
+    align-items: center;
+    /* height: 100vh; */
+    height: 150vh;
+}
+
+.wrapper2 {
+    height: auto;
+    margin-top: 200px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 50px;
+}
+
+.wrapper3 {
+    height: auto;
+    margin-top: 200px;
+    grid-template-columns: 1fr;
+    margin-bottom: 50px;
+}
+.hangdang {
+    width: 120%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.hangdang img {
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    margin-left: -16px;
+    margin-top: 30px;
+}
+
+/* play gallery */
+.play h2 {
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Grape Nuts', cursive;
+}
+
+.gallery {
+    
+    display: grid;
+    width: 100%;
+    /* max-width: 1000px; */
+    grid-gap: 50px;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-rows: auto;
+    justify-content: center;
+    /* align-items: center; */
+    margin-top: 50px;
+    /* margin-left: -50px; */
+}
+
+figure {
+    width: 300px;
+    perspective: 900px;
+}
+
+figure:nth-child(1) {
+    --imageUrl: url('../images/plays/霸王别姬.jpg');
+}
+
+figure:nth-child(2) {
+    --imageUrl: url('../images/plays/贵妃醉酒剧照.png');
+}
+
+figure:nth-child(3) {
+    --imageUrl: url('../images/plays/越剧西厢记剧照1.png');
+}
+
+figure:nth-child(4) {
+    --imageUrl: url('../images/plays/昆曲长生殿剧照2.png');
+}
+
+figure:nth-child(5) {
+    --imageUrl: url('../images/plays/昆曲牡丹亭人物照.jpg');
+}
+
+figure:nth-child(6) {
+    --imageUrl: url('../images/plays/锁麟囊.jpg');
+}
+figure img {
+    width: 100%;
+}
+.imageRoll {
+    margin-left: -6px;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 1em 0.5em 2em #1234, 0 0 5em #1234 inset;
+}
+.imageRoll i {
+    position: absolute;
+    left: calc(100% - 1px);
+    width: 6px;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 0.6s var(--delay, 0s) ease-in-out;
+    background-image: linear-gradient(#0003, #0000 5% 95%, #0003), var(--imageUrl, "");
+    background-position-x: calc(var(--bpx, 0) + 1px);
+    background-size: 300px 300px;
+}
+
+.imageRoll>i {
+    left: 0;
+    width: 5px;
+}
+
+.imageRoll:hover i {
+    transform: rotateY(var(--angle, 0deg)) skewY(var(--skew, 0deg));
+    transition-delay: var(--delay2, 0s);
+}
+.imageRoll>i {
+    --bpx: 0px;
+    --delay: 0s;
+    --delay2: 0.6s;
+    --angle: -10deg;
+    --skew: 0deg;
+}
+.imageRoll>i>i {
+    --bpx: -5px;
+    --delay: 0.01s;
+    --delay2: 0.59s;
+    --angle: -10.1deg;
+    --skew: -0.1deg;
+}
+
+.imageRoll>i>i>i {
+    --bpx: -10px;
+    --delay: 0.02s;
+    --delay2: 0.58s;
+    --angle: -10.2deg;
+    --skew: -0.2deg;
+}
+
+.imageRoll>i>i>i>i {
+    --bpx: -15px;
+    --delay: 0.03s;
+    --delay2: 0.57s;
+    --angle: -10.3deg;
+    --skew: -0.3deg;
+}
+
+.imageRoll>i>i>i>i>i {
+    --bpx: -20px;
+    --delay: 0.04s;
+    --delay2: 0.56s;
+    --angle: -10.4deg;
+    --skew: -0.4deg;
+}
+
+.imageRoll>i>i>i>i>i>i {
+    --bpx: -25px;
+    --delay: 0.05s;
+    --delay2: 0.55s;
+    --angle: -10.5deg;
+    --skew: -0.5deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i {
+    --bpx: -30px;
+    --delay: 0.06s;
+
+    --delay2: 0.54s;
+    --angle: -10.6deg;
+    --skew: -0.6deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i {
+    --bpx: -35px;
+    --delay: 0.07s;
+    --delay2: 0.53s;
+    --angle: -10.7deg;
+    --skew: -0.7deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i {
+    --bpx: -40px;
+    --delay: 0.08s;
+    --delay2: 0.52s;
+    --angle: -10.8deg;
+    --skew: -0.8deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -45px;
+    --delay: 0.09s;
+    --delay2: 0.51s;
+    --angle: -10.9deg;
+    --skew: -0.9deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -50px;
+    --delay: 0.1s;
+    --delay2: 0.5s;
+    --angle: -11deg;
+    --skew: -1deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -55px;
+    --delay: 0.11s;
+    --delay2: 0.49s;
+    --angle: -11.1deg;
+    --skew: -1.1deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -60px;
+    --delay: 0.12s;
+    --delay2: 0.48s;
+    --angle: -11.2deg;
+    --skew: -1.2deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -65px;
+    --delay: 0.13s;
+    --delay2: 0.47s;
+
+    --angle: -11.3deg;
+    --skew: -1.3deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -70px;
+    --delay: 0.14s;
+    --delay2: 0.46s;
+    --angle: -11.4deg;
+    --skew: -1.4deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -75px;
+    --delay: 0.15s;
+    --delay2: 0.45s;
+    --angle: -11.5deg;
+    --skew: -1.5deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -80px;
+    --delay: 0.16s;
+    --delay2: 0.44s;
+    --angle: -11.6deg;
+    --skew: -1.6deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -85px;
+    --delay: 0.17s;
+    --delay2: 0.43s;
+    --angle: -11.7deg;
+    --skew: -1.7deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -90px;
+    --delay: 0.18s;
+    --delay2: 0.42s;
+    --angle: -11.8deg;
+    --skew: -1.8deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -95px;
+    --delay: 0.19s;
+    --delay2: 0.41s;
+    --angle: -11.9deg;
+    --skew: -1.9deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -100px;
+    --delay: 0.2s;
+    --delay2: 0.4s;
+    --angle: -12deg;
+    --skew: -2deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+
+    --bpx: -105px;
+    --delay: 0.21s;
+    --delay2: 0.39s;
+    --angle: -12.1deg;
+    --skew: -2.1deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -110px;
+    --delay: 0.22s;
+    --delay2: 0.38s;
+    --angle: -12.2deg;
+    --skew: -2.2deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -115px;
+    --delay: 0.23s;
+    --delay2: 0.37s;
+    --angle: -12.3deg;
+    --skew: -2.3deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -120px;
+    --delay: 0.24s;
+    --delay2: 0.36s;
+    --angle: -12.4deg;
+    --skew: -2.4deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+
+    --bpx: -125px;
+    --delay: 0.25s;
+    --delay2: 0.35s;
+    --angle: -12.5deg;
+    --skew: -2.5deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -130px;
+    --delay: 0.26s;
+    --delay2: 0.34s;
+    --angle: -12.6deg;
+    --skew: -2.6deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -135px;
+    --delay: 0.27s;
+    --delay2: 0.33s;
+    --angle: -12.7deg;
+    --skew: -2.7deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -140px;
+    --delay: 0.28s;
+    --delay2: 0.32s;
+    --angle: -12.8deg;
+    --skew: -2.8deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -145px;
+    --delay: 0.29s;
+    --delay2: 0.31s;
+    --angle: -12.9deg;
+    --skew: -2.9deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -150px;
+    --delay: 0.3s;
+    --delay2: 0.3s;
+    --angle: -13deg;
+    --skew: -3deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -155px;
+    --delay: 0.31s;
+    --delay2: 0.29s;
+    --angle: -13.1deg;
+    --skew: -3.1deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -160px;
+    --delay: 0.32s;
+    --delay2: 0.28s;
+    --angle: -13.2deg;
+    --skew: -3.2deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+
+    --bpx: -165px;
+    --delay: 0.33s;
+    --delay2: 0.27s;
+    --angle: -13.3deg;
+    --skew: -3.3deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -170px;
+    --delay: 0.34s;
+    --delay2: 0.26s;
+    --angle: -13.4deg;
+    --skew: -3.4deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -175px;
+    --delay: 0.35s;
+    --delay2: 0.25s;
+    --angle: -13.5deg;
+    --skew: -3.5deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -180px;
+    --delay: 0.36s;
+    --delay2: 0.24s;
+    --angle: -13.6deg;
+    --skew: -3.6deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -185px;
+    --delay: 0.37s;
+    --delay2: 0.23s;
+    --angle: -13.7deg;
+    --skew: -3.7deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -190px;
+    --delay: 0.38s;
+    --delay2: 0.22s;
+    --angle: -13.8deg;
+    --skew: -3.8deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -195px;
+    --delay: 0.39s;
+    --delay2: 0.21s;
+    --angle: -13.9deg;
+    --skew: -3.9deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -200px;
+    --delay: 0.4s;
+    --delay2: 0.2s;
+    --angle: -14deg;
+    --skew: -4deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -205px;
+    --delay: 0.41s;
+    --delay2: 0.19s;
+    --angle: -14.1deg;
+    --skew: -4.1deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -210px;
+    --delay: 0.42s;
+    --delay2: 0.18s;
+    --angle: -14.2deg;
+    --skew: -4.2deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -215px;
+    --delay: 0.43s;
+    --delay2: 0.17s;
+    --angle: -14.3deg;
+    --skew: -4.3deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -220px;
+    --delay: 0.44s;
+    --delay2: 0.16s;
+    --angle: -14.4deg;
+    --skew: -4.4deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -225px;
+    --delay: 0.45s;
+    --delay2: 0.15s;
+    --angle: -14.5deg;
+    --skew: -4.5deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -230px;
+    --delay: 0.46s;
+    --delay2: 0.14s;
+    --angle: -14.6deg;
+    --skew: -4.6deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -235px;
+    --delay: 0.47s;
+    --delay2: 0.13s;
+    --angle: -14.7deg;
+    --skew: -4.7deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -240px;
+    --delay: 0.48s;
+    --delay2: 0.12s;
+    --angle: -14.8deg;
+    --skew: -4.8deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -245px;
+    --delay: 0.49s;
+    --delay2: 0.11s;
+    --angle: -14.9deg;
+    --skew: -4.9deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -250px;
+    --delay: 0.5s;
+    --delay2: 0.1s;
+    --angle: -15deg;
+    --skew: -5deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -255px;
+    --delay: 0.51s;
+    --delay2: 0.09s;
+    --angle: -15.1deg;
+    --skew: -5.1deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -260px;
+    --delay: 0.52s;
+    --delay2: 0.08s;
+    --angle: -15.2deg;
+    --skew: -5.2deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -265px;
+    --delay: 0.53s;
+    --delay2: 0.07s;
+    --angle: -15.3deg;
+    --skew: -5.3deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -270px;
+    --delay: 0.54s;
+    --delay2: 0.06s;
+    --angle: -15.4deg;
+    --skew: -5.4deg;
+}
+
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -275px;
+    --delay: 0.55s;
+    --delay2: 0.05s;
+    --angle: -15.5deg;
+    --skew: -5.5deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -280px;
+    --delay: 0.56s;
+    --delay2: 0.04s;
+    --angle: -15.6deg;
+    --skew: -5.6deg;
+}
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -285px;
+    --delay: 0.57s;
+    --delay2: 0.03s;
+    --angle: -15.7deg;
+    --skew: -5.7deg;
+}
+
+.imageRoll>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i>i {
+    --bpx: -290px;
+    --delay: 0.58s;
+    --delay2: 0.02s;
+    --angle: -15.8deg;
+    --skew: -5.8deg;
+}
+
+.imageRoll>figcaption {
+    position: absolute;
+    text-align: center;
+    padding-top: 2em;
+    padding-inline: 100px 25px;
+    z-index: -1;
+    /* font-size: 20px; */
+    width: 100%;
+    height: 100%;
+}
+
+.imageRoll>figcaption strong {
+       font-size: 20px;
+       display: block;
+   }
+
+   .imageRoll>figcaption p {
+       /* display: block; */
+       font-size: 14px;
+   }
+   /* video */
+    
+   .details {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+       margin: auto;
+       margin-top: 10px;
+   }
+
+   .video-description {
+       display: flex;
+       flex-direction: column;
+       /* 水平排列 */
+       justify-content: center;
+       align-items: center;
+   }
+
+.video video {
+       margin: 0 auto;
+       width: 100%;
+       /* 视频宽度自适应 */
+   }
+
+/* 名家照片墙 */
+
+* {
+    box-sizing: border-box;
+}
+
+/* hide scrollbar */
+::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-button {
+    width: 1px;
+    height: 1px;
+}
+
+.external {
+    margin:auto;
+    margin-top:70px;
+    overflow: hidden;
+    height: 500px;
+
+    width:1100px;
+    font-family: Hepta Slab, sans-serif;
+        font-weight: 500;
+        background: #efecdb;
+        color: #5D4037;
+}
+
+.horizontal-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh;
+    transform: rotate(-90deg) translate3d(0, -100vh, 0);
+    transform-origin: right top;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    height: 100vw;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    padding-bottom: 10rem;
+    margin-top:-120px;
+}
+
+.img-wrapper {
+    transform: rotate(90deg);
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    transform-origin: 50% 50%;
+    transform: rotate(90deg) translateZ(.1px) scale(0.9) translateX(0px) translateY(-3vh);
+    transition: 1s;
+}
+
+.img-wrapper:hover {
+    min-height: 65vh;
+}
+
+.slower {
+    transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(0%) translateY(-10vh);
+}
+
+.slower1 {
+    transform: rotate(90deg) translateZ(-.25px) scale(1.05) translateX(0%) translateY(8vh);
+}
+
+.slower2 {
+    transform: rotate(90deg) translateZ(-.3px) scale(1.3) translateX(0%) translateY(2vh);
+}
+
+.slower-down {
+    transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(0%) translateY(16vh);
+}
+
+.faster {
+    transform: rotate(90deg) translateZ(.15px) scale(0.8) translateX(0%) translateY(14vh);
+}
+
+.faster1 {
+    transform: rotate(90deg) translateZ(.05px) scale(0.8) translateX(0%) translateY(10vh);
+}
+
+.fastest {
+    transform: rotate(90deg) translateZ(.22px) scale(0.7) translateX(-10vh) translateY(-15vh);
+}
+
+.vertical {
+    transform: rotate(90deg) translateZ(-.15px) scale(1.15) translateX(0%) translateY(0%);
+}
+
+.last {
+    transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(25vh) translateY(-8vh);
+}
+
+/* .scroll-info, header {
+  position: absolute;
+  left: 1rem;
+} */
+
+
+/* header {
+  bottom: 1rem;
+} */
+.scroll-info {
+    top: 1rem;
+}
+
+.external a {
+    color: inherit;
+    font-weight: 500;
+
+}
+
+.external h1 {
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.img-wrapper a {
+    overflow: hidden;
+    display: block;
+    padding: 1vh;
+    background: #efecdb;
+    box-shadow: 0 10px 50px #5f2f1182;
+}
+.external img {
+    max-width: 45vh;
+    max-height: 50vh;
+    transition: .5s;
+    vertical-align: top;
+    filter: saturate(40%) sepia(30%) hue-rotate(5deg);
+}
+.external a:hover img {
+    filter: none;
+}
+.external p {
+    margin: 0;
+}
+.scroll-info {
+  display: flex;
+  align-items: center;
+}
+.icon svg {
+    width: 50px;
+    fill: currentcolor;
+}

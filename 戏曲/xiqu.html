@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国戏曲</title>
+    <link rel="stylesheet" href="css/xiqu.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 引入 jQuery -->
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        
+        /* 文化特征 */
+        .bigbox {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .texthead {
+            font-size: 45px;
+            font-family: 'Grape Nuts', cursive;
+            color: crimson;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .minbox {
+            max-width: 400px;
+            width: 25%;
+            margin-bottom: 10px;
+            padding-bottom: 70px;
+            position: relative;
+        }
+        .intro {
+            position: relative;
+            min-height: 300px;
+            height: 100%;
+            width: 100%;
+            /* background: transparent url(https://images.unsplash.com/photo-1467733444521-ab3e6983f8b1?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=69aaefe565d19beb876979d89510601b) top center no-repeat; */
+            /* background: transparent url(../images/剧群像.jpg) top center no-repeat; */
+            background-size: 100%;
+            overflow: hidden;
+            transition: all .72s ease-in-out;
+        }
+
+        .intro:after {
+            content: '';
+            display: block;
+            position: absolute;
+            /* width: 100%; */
+            height: 500px;
+            right: -100%;
+            left: 0;
+            transform: skew(100deg);
+            background: #fff;
+            bottom: -70%;
+            box-shadow: inset 1px 0px 5px 0px rgba(204, 204, 204, 0.72);
+        }
+
+        .minbox:after {
+            content: '';
+            max-width: 300px;
+            width: 100%;
+            margin: 0% auto 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            right: 0;
+            box-shadow: 0px 5px 5px 0px rgba(204, 204, 204, 0.72);
+            z-index: -1;
+            transition: all .52s ease-in-out;
+        }
+
+        .meta {
+            max-width: 300px;
+            width: 100%;
+            margin: 0% auto 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+            padding-top: 110px;
+
+            
+            overflow: hidden;
+            transition: all .52s ease-in-out;
+        }
+
+        .meta__inner {
+            padding: .25rem 1rem;
+            line-height: 1.5rem;
+            position: relative;
+            background: #fff;
+            z-index: 15;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .meta:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 80px;
+            max-width: 300px;
+            height: 300px;
+            background: #fff;
+
+            border: 1px solid #ccc;
+            transform: rotate(90deg) skew(10deg);
+            z-index: 4;
+        }
+        h3 {
+            position: relative;
+            font-family: sans-serif;
+            font-weight: 300;
+            border-left: 4px solid #e91e63;
+            padding-left: .72rem;
+        }
+        p {
+            font-family: serif;
+            font-size: 15px;
+            font-weight: inherit;
+            color: #000;
+            text-align: justify;
+        }
+        p a {
+            color: #e91e63;
+            text-decoration: none;
+            opacity: .72;
+            transition: all .27s ease-in-out;
+        }
+        p a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .minbox:hover .meta {
+            transform: translateY(5px);
+        }
+        .minbox:hover .intro {
+            transform: translateY(-5px);
+        }
+        .minbox:hover:after {
+            transform: translateY(5px);
+        }
+        ul.card-stacks {
+            width: 660px;
+            list-style-type: none;
+            margin: 0 auto 20px;
+            padding: 0;
+            position: relative;
+            cursor: pointer;
+            height: 700px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul.card-stacks li.title {
+            margin: 0 0 20px;
+        }
+
+        ul.card-stacks li.title h2 {
+            font-weight: 700;
+        }
+
+        ul.card-stacks li.stack {
+            position: absolute;
+            left: 0px;
+            transition: all 0.4s cubic-bezier(0.63, 0.15, 0.03, 1.02);
+        }
+
+        ul.card-stacks li.stack ul.cards-down {
+            position: relative;
+            margin: 0 0 20px;
+            padding: 20px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card {
+            transition: all 0.4s cubic-bezier(0.63, 0.15, 0.03, 1.22);
+            left: 0px;
+            transition-delay: 0.4s;
+            background: #FFF;
+            overflow: hidden;
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            position: absolute;
+            top: 0px;
+            box-shadow: 1px 2px 2px 0 #aaa;
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card img {
+            object-fit: cover;
+            height: 100%;
+            width: auto;
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card div.content {
+            padding: 5px 10px;
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card.card-1 {
+            z-index: 10;
+            transform: rotateZ(-2deg);
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card.card-2 {
+            z-index: 9;
+            transform: rotateZ(-7deg);
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card.card-3 {
+            z-index: 8;
+            transform: rotateZ(5deg);
+        }
+
+        ul.card-stacks.transition li.stack.stack-1 {
+            left: 0px;
+        }
+
+        ul.card-stacks.transition li.stack.stack-2 {
+            left: 220px;
+        }
+
+        ul.card-stacks.transition li.stack.stack-3 {
+            left: 440px;
+        }
+
+        ul.card-stacks.transition li.stack ul.cards-down li.card {
+            transform: rotateZ(0deg);
+        }
+
+        ul.card-stacks.transition li.stack ul.cards-down li.card.card-1 {
+            top: 440px;
+        }
+
+        ul.card-stacks.transition li.stack ul.cards-down li.card.card-2 {
+            top: 220px;
+        }
+        /* 戏曲分类 */
+        .main-box1 {
+            display: flex;
+            background: #a70404c0;
+            margin: 70px auto 70px auto;
+            padding: 0;
+            width: 991px;
+              font-family: 'Montserrat', sans-serif;
+        }
+        #content4 h2 {
+            margin-top: 50px;
+            text-align: center;
+            font-family: 'Grape Nuts', cursive;
+        }
+
+        .box1 {
+
+            height: 322px;
+            padding: 15px;
+            border-right: 1px solid white;
+            /* webkit-transition: 0.8s; */
+            -o-transition: 0.8s;
+            transition: 0.8s;
+            position: relative;
+
+
+            overflow: hidden;
+            list-style: none;
+        }
+
+        .detail1 {
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: white;
+            color: black;
+            opacity: 0;
+            padding: 30px;
+            box-sizing: border-box;
+            /* webkit-transition: 0.8s; */
+            -o-transition: 0.8s;
+            transition: 0.8s;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+        }
+
+        .box1.active {
+            width: 70% !important;
+        }
+
+        .box1.active .detail1 {
+            opacity: 1;
+            -webkit-transition-delay: 0.6s;
+            -moz-transition-delay: 0.6s;
+            -o-transition-delay: 0.6s;
+            transition-delay: 0.6s;
+            transform: none;
+        }
+
+        .box1 span {
+            writing-mode: vertical-rl;
+            font-size: 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            width: 40px;
+            /* transform: rotate(180deg); */
+            font-weight: 400;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+        .box1.active span {
+            left: 25px;
+            right: auto;
+            margin: 0;
+            font-weight: 600
+        }
+        .main-box1 p {
+            line-height: 23px;
+        }
+        /* 剪影 */
+         .casket {
+            min-block-size: 100%;
+            display: grid;
+            place-content: center;
+            /* 设置上下内边距为 30% 视口高度 */
+            padding-block: 10dvh;
+        }
+
+        @keyframes slide-fade-in {
+            from {
+                opacity: 0;
+                box-shadow: none;
+                transform: scale(.8) translateY(15vh);
+            }
+        }
+        .cards {
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+            /* 自动排列 */
+            grid-auto-flow: dense;
+            grid-template-columns: repeat(3, 30ch);
+        }
+        .card {
+            animation: slide-fade-in both;
+            /* 使用浏览器的视图时间线,允许动画根据视口的变化进行同步 */
+            animation-timeline: view();
+            /* 定义动画时间范围 */
+            animation-range: contain 0% contain 50%;
+            border-radius: 10px;
+            line-height: 6;
+            box-shadow: 0px 8px 20px #00000022;
+
+            font-size: 32px;
+            letter-spacing: 5px;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom right,
+                    /* #91defe,
+                    #99c0f9,
+                    #bdb6ec,
+                    #d7b3e3,
+                    #efb3d5,
+                    #f9bccc*/
+                    #91defe,
+                    #99c0f9,
+                    #bdb6ec,
+                    #b760dd,
+                    #ea707a,
+                    hsl(0, 98%, 64%) ); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+        }
+        .card:nth-of-type(4n) {
+            grid-column: span 2;
+        }
+
+        .card:nth-of-type(5n) {
+            grid-column: span 2;
+        }
+
+        .card:nth-of-type(9n) {
+            grid-row: span 2;
+        }
+        /* guochao */
+        .faded {
+            transition: opacity 0.25s;
+            opacity: 0.25;
+        }
+
+        #inherit {
+            min-height: 100vh;
+        }
+
+        #inherit .in {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 15px;
+            width: auto;
+            max-height: 60vh;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            border-bottom-right-radius: 0;
+            padding-bottom: 25px;
+            transition: all .25s;
+        }
+
+        #inherit .in .header {
+            height: 100%;
+            margin-bottom: 15px;
+            transition: all 0.25s;
+        }
+
+        #inherit .in .header .header-image {
+            background-size: cover;
+            /* 适合宽的图片 */
+
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            height: 180px;
+            /* 图片的初始高度 */
+            transition: all 0.25s cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+
+        #inherit .in:first-of-type {
+            margin-top: 50px;
+        }
+
+        #inherit .in.open {
+            margin: 0;
+            /* 移除margin */
+            padding-bottom: 10px;
+            max-height: none;
+            /* 取消最大高度限制 */
+            transition: all .25s;
+        }
+
+        #inherit .in.open .body-content {
+            width: auto;
+        }
+
+        #inherit .in.open .body-content .in-body-title {
+            width: 100%;
+        }
+        #inherit .in .in-content {
+            margin-top: 0;
+            padding: 0 25px 0 25px;
+            height: 100%;
+            transition: margin-top 0.25s;
+            transition: all 0.25s;
+        }
+        #inherit .in .in-content .in-body-title h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: capitalize;
+            margin-top: 0;
+            margin-bottom: 0;
+            transition: all 0.25s;
+        }
+        #inherit .in .in-content .in-body {
+            width: 100%;
+            transition: all 0.25s;
+        }
+
+        #inherit .in .in-content .in-body p {
+            font-size: 20px;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            #inherit {
+                position: absolute;
+                left: 50%;
+                /* width: 100%; */
+                 width: 1140px;
+                transform: translateX(-50%);
+            }
+
+            #inherit .in {
+                height: 500px;
+                width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 39px;
+            }
+         
+
+            #inherit .in:hover {
+                transform: scale(1.1);
+                /* 鼠标悬停放大效果 */
+                transition: all 0.25s cubic-bezier(0.65, 0.05, 0.36, 1);
+                box-shadow: 0 0 150px rgba(0, 0, 0, 0.075);
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+       
+             #inherit .in:hover .header .header-image {
+                transform: scale(1.1) translateY(-3%);
+                width: 100%;
+                height: 100%;
+                transition: all 0.25s cubic-bezier(0.65, 0.05, 0.36, 1);
+            }
+
+            #inherit .in.open {
+                width: 100%;
+                height: auto;
+                /* 自适应高度 */
+                border-radius: 0;
+                /* 展开后无圆角 */
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #inherit .in.open .header {
+                height: 25%;
+                transition: all 0.25s;
+            }
+            #inherit .in.open .header .header-image {
+                height: 100%;
+                transition: all 0.25s;
+            }
+
+            #inherit .in.open .in-content {
+                margin-top: 25px;
+                transition: all 0.25s;
+                margin: 50px auto;
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+            #inherit .in.open .in-content .in-body {
+                width: 425;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="nav-1">
+        <li class="slide1"></li>
+        <li class="slide2"></li>
+        <li><a href="xiqu.html">传统戏剧</a></li>
+        <li><a href="#/">传统音乐</a></li>
+        <li><a href="#/">传统技艺</a></li>
+        <li>
+            <img class="nav-image" src="images/logo/logo.jpg" alt="logo">
+        </li>
+        <li><a href="#/">传统体育</a></li>
+        <li><a href="#/">传统节气</a></li>
+        <li><a href="#/">首页</a></li>
+    </ul>
+    <!-- banner -->
+    <div class="container">
+        <div class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="#"><img src="images/banner/京剧漫化.png" alt="Image 1"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="images/banner/生角.png" alt="Image 2"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="images/banner/生旦净末丑.png" alt="Image 3"></a></div>
+                    <!-- <div class="swiper-slide"><a href="#"><img src="images/banner/生角1.png" alt="Image 4"></a></div> -->
+                </div>
+                <!-- 分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 导航箭头 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="main-box">
+            <div class="box active" data-target="content1">
+                <div class="line">历史</div>
+                <div class="line">沿革</div>
+            </div>
+            <div class="box" data-target="content2">
+                <div class="line">文化</div>
+                <div class="line">特征</div>
+            </div>
+            <div class="box" data-target="content3">
+                <div class="line">代表</div>
+                <div class="line">剧目</div>
+            </div>
+            <div class="box" data-target="content4">
+                <div class="line">戏曲</div>
+                <div class="line">剪影</div>
+            </div>
+            <div class="box" data-target="content5">
+                <div class="line">传承</div>
+                <div class="line">保护</div>
+            </div>
+        </div>
+        <div class="detail" id="content1">
+            <section class="timeline">
+                <h1>戏曲发展时间线</h1>
+                <ul>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">萌芽期</div>
+                        <div class="title">先秦</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;戏曲是中国传统的戏剧形式,是中国最具有民族特点和风格的艺术样式之一。其最早可以追溯到上古时代用来娱神的原始歌舞。《尚书尧典》上说:“於!子击石拊石,百鲁率舞。”《吕氏春秋古乐》上也说:“昔葛天氏之乐,三人操牛尾,投足以歌八阙:一曰《载民》,二日《玄鸟》,三日《遂草木》四日《奋五谷》五日《敬天常》六曰《达帝功》,七曰《依地德》八曰《总禽兽之极》。”如在许多古老的农村，还保持着源远流长的歌舞传统，如“傩戏”；同时，一些新的歌舞如“社火”、“秧歌”等适应人民的精神需求而诞生。正是这些歌舞演出，造就出一批又一批技艺娴熟的民间艺人，并向着戏曲的方向一点点迈进。《诗经》里的“颂”，《楚辞》里的“九歌”，就是祭神时歌舞的唱词。从春秋战国到汉代，在娱神的歌舞中逐渐演变出娱人的歌舞。从汉魏到中唐，又先后出现了以竞技为主的“角抵”（即百戏）、以问答方式表演的“参军戏”和扮演生活小故事的歌舞“踏摇娘”等，这些都是萌芽状态的戏剧。
+                            </p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">形成期</div>
+                        <div class="title">唐代中后期</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;中唐以后，中国戏剧飞跃发展，戏剧艺术逐渐形成。唐代文学艺术的繁荣，是经济高度发展的结果，促进了戏曲艺术的自立门户，并给戏曲艺术以丰富的营养，诗歌的声律和叙事诗的成熟给了戏曲决定性影响。音乐舞蹈的昌盛，为戏曲提供了最雄厚的表演、唱腔的基础。教坊梨园的专业性研究，正规化训练，提高了艺人们的艺术水平，使歌舞戏剧化历程加快，产生了一批用歌舞演故事的戏曲剧目。
+                            </p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">发展期</div>
+                        <div class="title">宋金</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;宋代的“杂剧”，金代的“院本”和讲唱形式的“诸宫调”，从乐曲、结构到内容，都为元代杂剧打下了基础。
+                            </p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">成熟期</div>
+                        <div class="title">元代</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;到了元代，“杂剧”就在原有基础上大大发展，成为一种新型的戏剧。它具备了戏剧的基本特点，标志着中国戏剧进入成熟的阶段。12世纪中期到13世纪初，逐渐产生了职业艺术和商业性的演出团体及反映市民生活和观点的元杂剧和金院本，如关汉卿创作的《窦娥冤》、马致远的《汉宫秋》以及《赵氏孤儿大报仇》等作品。这个时期是戏曲舞台的繁荣时期。
+                            </p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">繁荣期</div>
+                        <div class="title">明清</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;到了明代，传奇发展起来了。明代传奇的前身是宋元时代的南戏。南戏在体制上与北杂剧不同：它不受四折的限制，经过文人的加工和提高，这种本来不够严整的短小戏曲，终于变成相当完整的长篇剧作。
+                            </p>
+                            <p>&nbsp;&nbsp;明代中叶，传奇作家和剧本大量涌现，其中成就最大的是汤显祖。他一生写了许多传奇剧本，《牡丹亭》是他的代表作，直到今天，“闺塾”、“惊梦”等片断还活跃在戏曲表演的舞台上。16世纪明朝中叶，江南兴起了昆腔，涌出了《十五贯》、《占花魁》等戏曲剧目。这一时期受农民欢迎的戏是产生于安徽、江西的弋阳腔，昆腔受封建上层人士的欢迎。
+                            </p>
+                            <p>&nbsp;&nbsp;明后期的舞台，开始流行以演折子戏为主的风尚。它只是全剧中相对独立的一些片断，但是在这些片断里，场面精彩，唱做俱佳。《牡丹亭》中的“游园”、“惊梦”，《拜月亭记》中的“踏伞”、“拜月”，《玉簪记》中的“琴挑”、“追舟”等众多的折子戏，已成为观众爱看、耐看的精品。
+                            </p>
+                            <p>&nbsp;&nbsp;明末清初的作品多是写人民群众心中的英雄，如穆桂英、陶三春、赵匡胤等。这时的地方戏，主要有北方梆子和南方的皮黄。京剧是在清代地方戏高度繁荣的基础上产生的。在同治、光绪年间，出现了名列“同光十三绝”的第一代京剧表演艺术家及不同流派的宗师，标志着京剧艺术的成熟与兴盛。不久京剧向全国发展，特别是在上海、天津，京剧成为具有广泛影响的剧种，将中国的戏曲艺术推进到一个新的高度。</p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">革新期</div>
+                        <div class="title">近代</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;辛亥革命前后，一批有造诣的戏曲艺术家从事戏曲艺术改良活动，著名的有汪笑侬、潘月樵、夏月珊等，他们为以后的戏曲改良积累了宝资的经验。从1919年“五四运动”到中华人民共和国成立，在这段时期内，一些志之士对戏曲进行了改革。梅兰芳在“五四"前夕演出了《邓粗姑》《一缕麻》等宣传民主思想的时装新戏，周信芳、程砚秋等也创作了不少的作品。袁雪芬则高举越剧改革之大旗，主演鲁迅名著《祥林嫂》，在中国戏曲中率先形成了融合编、导、舞、音、美为一体的综合艺术机制。“率先开始了中国戏曲艺术大写意与大写实相结合的机制。
+                            </p>
+                        </div>
+                    </li>
+                    <li style="--accent-color:#fa3232">
+                        <div class="date">争辉期</div>
+                        <div class="title">现代</div>
+                        <div class="descr">
+                            <p>&nbsp;&nbsp;新中国成立后，涌现了一批优秀剧目，如京剧《将相和》、《白蛇传》，评剧《秦香莲》，越剧《梁山伯与祝英台》，昆剧《十五贯》等，著名历史学家吴晗还撰写了历史京剧《海瑞罢官》。以后，又陆续推出一系列优秀作品，如京剧《白毛女》、《红灯记》、《奇袭白虎团》，越剧《西厢记》，评剧《刘巧儿》，沪剧《芦荡火种》，豫剧《朝阳沟》等。粉碎“四人帮”后，觅逑了戏曲艺术队伍，为群众喜爱但被停演或遭到批判的大量传统剧，如京剧《谢瑶环》，莆仙剧《春草闯堂》，吕剧《姊妹易嫁》等也得以重新上演。戏曲艺术发展到今天，经过不同的时代，不断适应新时代、新观众的需要，保持和发扬民族传统的艺术特色，戏曲界提出的“现代化”与“戏曲化“的问题，已成为新的历史时期积极探讨和积极实践的问题。2021年4月29日，中华人民共和国教育部经研究，决定成立教育部中国戏曲教育指导委员会。
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="detail" id="content2">
+            <div class="texthead">四大行当</div>
+            <div class="bigbox">
+                <div class="minbox">
+                    <section class="intro"
+                        style=" background: transparent url(images/characters/生像.jpg) top center no-repeat; background-size: cover ;">
+                    </section>
+
+                    <div class="meta">
+                        <div class="meta__inner">
+                            <h3>生行</h3>
+                            <p>&nbsp;&nbsp;扮演男性人物，泛指剧中男主角。根据所扮演人物年龄、身份的不同，又划分为老生、小生、武生等分支，表演上各有特点。
+                                <!-- <a href="#">阅读更多...</a> -->
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="minbox">
+                    <section class="intro"
+                        style=" background: transparent url(images/characters/旦像.jpg) top center no-repeat; background-size: cover ;">
+                    </section>
+
+                    <div class="meta">
+                        <div class="meta__inner">
+                            <h3>旦行</h3>
+                            <p>&nbsp;&nbsp;女角色之统称。近代戏曲旦角根据所扮演人物年龄、性格、身份的不同，大致划分为正旦（青衣）、花旦、武旦、老旦、彩旦等专行，表演上各有特点。
+                                <!-- <a href="#">阅读更多 ...</a> -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="minbox">
+                    <section class="intro"
+                        style=" background: transparent url(images/characters/净像.webp) top center no-repeat; background-size: cover ;">
+                    </section>
+
+                    <div class="meta">
+                        <div class="meta__inner">
+                            <h3>净行</h3>
+                            <p>&nbsp;&nbsp;俗称花脸。以面部化妆运用各种色彩和图案勾勒脸谱为突出标志，扮演性格、气质、相貌上有特异之点的男性角色。或粗犷豪迈，或刚烈耿直，或阴险毒辣，或鲁莽诚朴。
+                                <!-- <a href="#">阅读更多 ...</a> -->
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="minbox">
+                    <section class="intro"
+                        style=" background: transparent url(images/characters/丑像.jpg) top center no-repeat; background-size: cover ;">
+                    </section>
+
+                    <div class="meta">
+                        <div class="meta__inner">
+                            <h3>丑行</h3>
+                            <p>&nbsp;&nbsp;喜剧角色。由于面部化妆用白粉在鼻梁眼窝间勾画小块脸谱，又叫小花脸。按扮演人物的身份、性格和技术特点，大致可分为文丑和武丑两大支系。
+                                <!-- <a href="#">阅读更多 ...</a></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="texthead" style="margin-top:30px;margin-bottom:-150px">伴奏乐器</div>
+            <section class="characters">
+                <div class="wrapper1 wrapper2">
+                    <div class="card1 card2 card-8">
+                        <div class="glare-container">
+                            <div class="glare">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card1 card2 card-9">
+                        <div class="glare-container">
+                            <div class="glare">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="texthead" style="margin-bottom:-100px">戏曲脸谱</div>
+                <section class="characters">
+                    <div class="wrapper1 wrapper3">
+                        <ul class="card-stacks">
+                            <li class="stack stack-1">
+                                <ul class="cards-down">
+                                    <li class="card card-1"><img src="images/characters/lianpu1.webp" />
+                                    </li>
+                                    <li class="card card-2"><img src="images/characters/lianpu3.webp" />
+                                        <div class="content" </div>
+                                    </li>
+                                    <li class="card card-3"><img src="images/characters/lianpu2.webp" />
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="stack stack-2">
+                                <ul class="cards-down">
+                                    <li class="card card-1"><img src="images/characters/lianpu7.webp" />
+                                    </li>
+                                    <li class="card card-2"><img src="images/characters/lianpu4.webp" />
+                                    </li>
+                                    <li class="card card-3"><img src="images/characters/lianpu9.png" />
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="stack stack-3">
+                                <ul class="cards-down">
+                                    <li class="card card-1"><img src="images/characters/lianpu5.webp" />
+                                    </li>
+                                    <li class="card card-2"><img src="images/characters/lianpu6.webp" />
+                                    </li>
+                                    <li class="card card-3"><img src="images/characters/lianpu8.webp" />
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <div class="hangdang">
+                    <img src="images/characters/生旦净末丑动图.jpg">
+                </div>
+            </section>
+        </div>
+        <div class="detail" id="content3">
+            <div class="play">
+                <h2>代表剧目展示墙</h2>
+                <div class="gallery">
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>霸王别姬</strong>
+                            <p>&nbsp;&nbsp;该剧讲述了秦末，楚汉相争，项羽不听劝告，执意发兵。遭到韩信设下十面埋伏阵，被困于垓下。项羽感到大势已去，便回帐中与虞姬饮酒悲歌。虞姬起舞宽慰，为解除项羽后顾之忧，舞剑后自刎。项羽突围，逃至乌江，觉得无颜去见江东父老，自刎而死。<a href="#">阅读更多
+                                ...</a>
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>贵妃醉酒</strong>
+                            <p>&nbsp;&nbsp;是梅派代表剧目之一。该剧描写的是杨玉环深受唐明皇的荣宠，本是约唐明皇百花亭赴筵，但久候不至，随后知道他早已转驾西宫，于是羞怒交加，万端愁绪无以排遣，遂命高力士、裴力士添杯奉盏，饮致大醉，后来怅然返宫的一段情节。
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>西厢记</strong>
+                            <p>&nbsp;&nbsp;该剧根据元人王实甫的杂剧《西厢记》改编而成，讲述唐贞元间书生张生，在普救寺邂逅已故崔相国之女莺莺，发生爱情的故事。该剧以歌颂莺莺和张珙的纯真爱情和挣脱封建礼教桎梏的反抗精神为主，台词保持原著的文学特色，典雅清丽。
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>长生殿</strong>
+                            <p>&nbsp;&nbsp;前半部分写唐明皇、杨贵妃，长生殿盟誓，安史乱起，马嵬之变，杨贵妃命殒黄沙。后半部分大都采自野史传闻，写安史乱后玄宗思念贵妃，派人上天入地，到处寻觅她的灵魂；杨贵妃也深深想念唐明皇。二人的精诚感动上天，最终在月宫中团圆。
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>牡丹亭</strong>
+                            <p>&nbsp;&nbsp;该剧目讲述官家千金杜丽娘对梦中书生柳梦梅倾心相爱，竟伤情而死，化为魂魄寻找现实中的爱人，人鬼相恋，最后起死回生，终于与柳梦梅永结同心的故事。
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="imageRoll">
+                        <i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i><i>
+                                                                                                                                                                                                                                                                    </i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i></i>
+                        <figcaption><strong>锁麟囊</strong>
+                            <p>&nbsp;&nbsp;该剧讲述了善良的富家小姐薛湘灵，在出嫁时将装满珠宝的锁麟囊赠予贫寒女子赵守贞。后薛湘灵遭水灾落难，流落至富户卢家当保姆，发现卢家主母正是当年的贫寒女子赵守贞。赵守贞得知后待其为上宾并结为姐妹的故事。
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="details">
+                    <h2>长生殿剧目片段</h2>
+                    <div class="video-description">
+                        <div class="video">
+                            <video width="400" controls>
+                                <source src="video/【邵天帅&邵峥】昆曲-长生殿·小宴（泣颜回）4K｜北昆.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="description">
+                            <h3>详情</h3>
+                            <p>&nbsp;&nbsp;唐明皇继位以来，励精图治，国势强盛，但他却从此寄情声色，下旨选美。因发现宫女杨玉环才貌出众，于是册封为贵妃，两人对天盟誓，并以金钗钿盒为定情之物。杨玉环自册封为贵妃，荣耀及于一门，其兄弟姊妹俱有封赏。这年春日，唐明皇与杨贵妃游幸曲江，秦、虢、韩三国夫人随驾，唐明皇因爱虢国夫人不施铅华的淡雅之美，特命她到望春宫陪宴并留宿。杨贵妃知悉后，醋性大发，言语间触怒了明皇，明皇一怒之下，命高力士将她送归相府。此后，唐明皇坐立不安，后悔不已。高力士将此情景报与贵妃。杨贵妃遂剪下一缕青丝，托他献给明皇，明皇见发思情，命高力士连夜迎接回宫，两人和好如初。失机边将安禄山按律当斩，却因贿赂杨国忠，不但免于一死，反而升了官，从此骄横于朝廷，唐明皇失策竟将他调任范阳节度使。安禄山一到范阳，招兵买马，妄图进兵中原，夺取天下。此时，唐明皇还沉湎在声色之中。杨贵妃新谱《霓裳羽衣曲》压倒梅妃《惊鸿舞》。自此，三千宠爱，集于一身。唐明皇为她，不惜劳民伤财，从海南运来荔枝。安禄山反叛，唐军节节败退。唐明皇奔逃蜀中避难，在马嵬坡，军士哗变，杀杨国忠，更逼杨妃。唐明皇无奈，被迫赐杨妃自尽。自此心灰意冷，传位于太子，自己当了太上皇。后大将郭子仪奉旨征讨，大败安禄山，收复长安。唐明皇以太上皇身份自蜀中归来，仍是日夜思念杨妃。有一天做了一场恶梦后，访得异人为杨玉环招魂。临邛道士杨通幽奉旨作法，找到杨玉环幽魂。八月十五夜，杨通幽引太上皇魂魄来到月宫与杨玉环相会。玉帝传旨，让二人居切利天宫，永为夫妇</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="external">
+            <p style="font-size: 35px;">定格瞬间</p>
+            <p>&nbsp;&nbsp; 时光轻轻走过,留下永恒的经典</p>
+            <div class="horizontal-scroll-wrapper">
+        
+                <div class="img-wrapper slower">
+                    <a><img src="images/plays/黄梅戏孟丽君剧照2.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper faster">
+                    <a><img src="images/plays/222288649_1595602318231.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower vertical">
+                    <a><img src="images/plays/黄梅戏孟丽君剧照3.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower slower-down">
+                    <a><img src="images/plays/剧照4.webp" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper">
+                    <a><img src="images/plays/剧照5.webp" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower">
+                    <a><img src="images/plays/剧照6.webp" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper faster1">
+                    <a><img src="images/plays/秦腔剧照11.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower slower2">
+                    <a><img src="images/plays/秦腔剧照4.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper">
+                    <a><img src="images/plays/越剧红楼梦剧照1.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower">
+                    <a><img src="images/plays/黄梅戏天仙配剧照1.jpg" alt=""></a>
+                </div>
+        
+                <div class="img-wrapper slower last">
+                    <a><img src="images/plays/黄梅戏女驸马剧照2.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="detail" id="content4">
+            <div class="details">
+                <h2>中国戏曲：向世界展示独特的东方美学</h2>
+                <div class="video-description">
+                    <div class="video">
+                        <video width="400" controls>
+                            <source src="video/中国戏曲.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <h2>中国五大剧种</h2>
+            <!-- <div class="texthead">中国五大剧种</div> -->
+            <ul class="main-box1">
+                <li class="box1 active"><span>京剧</span>
+            
+                    <div class="detail1 active">
+                        <p>&nbsp;&nbsp;京剧是中国的“国粹”，又称“京戏”、“国剧”、“皮黄”。中国戏曲剧种之首。如果从四大徽班进京算起，已有200多年的发展史。京剧之名始见于清光绪二年（1876）的《申报》，历史上曾有皮黄、二黄、黄腔、京调、京戏、平剧、国剧等称谓，清朝乾隆五十五年（1790年）安徽四大徽班进京后与北京剧坛的昆曲、汉剧、弋阳、乱弹等剧种经过五、六十年的融汇，演变成为京剧。其剧目之丰富、表演艺术家之多、剧团之多、观众之多、影响之深均为全国之冠。京剧是综合性表演艺术。即唱（歌唱）、念（念白）、做（表演）、打（武打）、舞(舞蹈)为一体、通过程式的表演手段叙演故事，刻画人物，表达"喜、怒、哀、乐、惊、恐、悲"的思想感情。
+                        </p>
+                    </div>
+                </li>
+                <li class="box1"><span>豫剧</span>
+                    <div class="detail1">
+                        <p>&nbsp;&nbsp;是在河南梆子的基础上不断继承、改革和创新发展起来的。建国后因河南简称“豫”，故称豫剧。豫剧在安徽北部地区称梆剧，山东、江苏的部分地区仍称梆子戏。其流行区域主要在黄河、淮河流域。除河南省外，湖北、安徽、江苏、山东、河北、北京、山西、陕西、四川、甘肃、青海、新疆、台湾等省区市都有专业豫剧团的分布，民间有“最大地方剧种”之称。豫剧,也称河南梆子、河南高调。因早期演员用本嗓演唱，起腔与收腔时用假声翻高尾音带“讴”，又叫“河南讴”。在豫西山区演出多依山平土为台，当地称为“靠山吼”。
+                        </p>
+                    </div>
+                </li>
+                <li class="box1"><span>越剧</span>
+            
+                    <div class="detail1">
+                        <p>&nbsp;&nbsp;江南传统戏曲形式。主要流行于浙江、上海、江苏、福建、陕西、湖北等地，在海外亦有很高的声誉和广泛的群众基础，当为流传最广之地方剧种。越剧长于抒情，以唱为主，声腔清悠婉丽，优美动听，表演真切动人，极具江南地方色彩。
+                        </p>
+                        <p>&nbsp;&nbsp;越剧流派唱腔由曲调和唱法两大部分组成，在曲调的组织上，各派都有与众不同的手法和技巧，通过旋律、节奏以及板眼的变化，形成各自的基本风格。特别是起调，落调，句间、句尾的拖腔，以及旋律上不断反复、变化的特征乐汇和惯用音调等，更是体现各流派唱腔艺术特点的核心和关键。在演唱方法上，则大都集中在唱字、唱声、唱情等方面显示自己的独特个性，通过发声、音色以及润腔装饰的变化，形成不同的韵味美。
+                        </p>
+                    </div>
+                </li>
+                <li class="box1"><span>评剧</span>
+                    <div class="detail1">
+                        <p>&nbsp;&nbsp;评剧是在华北、东北及其他一些地区流行很广，曾经被称为第二大剧种，鼎盛时期除个别省份外几乎都有评剧院团（京津冀东三省河南广西新疆青海内蒙云南贵州重庆武汉江西山西山东陕西安徽等）。评剧是中国戏曲剧种，俗称蹦蹦戏、平腔梆子，落子戏
+                            ，唐山落子，奉天落子，1935年改称今名。1910年前后形成于唐山。评剧在民间说唱莲花落和民间歌舞蹦蹦的基础上发展而成，原来形式单调，经成兆才等艺人改革，将第三人称改为第一人称，由演员扮演剧中人；以蹦蹦音乐为基础，吸收冀东民间音乐素材，创造出行当使用的唱腔；采用全套的河北梆子乐器伴奏，故取名平腔梆子戏。评剧是在我国有较大影响的地方剧种之一。
+                        </p>
+                    </div>
+                </li>
+            
+                <li class="box1"><span>黄梅戏</span>
+                    <div class="detail1">
+                        <p>&nbsp;&nbsp;黄梅戏，旧称黄梅调或采茶戏，是中国的五大剧种之一。黄梅戏是安徽省的主要地方戏曲剧种。在湖北、江西、福建、浙江、江苏、台湾等省以及香港地区亦有黄梅戏的专业或业余的演出团体，受到广泛的欢迎。黄梅戏原名“黄梅调”，是十八世纪后期在皖、鄂、赣三省毗邻地区黄梅形成的一种民间小戏。其中一支逐渐东移到安徽省安庆市为中心的安庆地区，与当地民间艺术相结合，用当地语言歌唱、说白，形成了自己的特点，被称为“怀腔”或“黄梅调”。这就是今日黄梅戏的前身。在民国10年(1921年)出版的《宿松县志》中,第一次正式提出“黄梅戏”这个名称。
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class="casket">
+                <div class="cards">
+                    <div class="card"><img src="images/cut/杜丽娘.webp"></div>
+                    <div class="card"><img src="images/cut/穆桂英.webp"></div>
+                    <div class="card"><img src="images/cut/霍小玉.webp"></div>
+                    <div class="card"><img src="images/cut/昆曲动图gif.gif"></div>
+                    <div class="card"> <img src="images/动漫形象.jpg"></div>
+                    <div class="card"><img src="images/cut/粤剧帝女花长平公主.webp"></div>
+                    <div class="card"><img src="images/cut/抗金兵.webp"></div>
+                    <!-- <div class="card"><img src="images/cut/京剧动图.gif"></div>
+                    <div class="card"> <img src="images/cut/昆曲-游园惊梦.webp"></div>
+                    <div class="card"> <img src="images/cut/京剧动图.gif"></div> -->
+              </div>
+            </div>
+        </div>
+        <div class="detail" id="content5">
+            <div id="inherit">
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/京剧产品1.png')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                            <h2>让戏曲在新时代绽放瑰宝之光</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;习近平总书记在文化传承发展座谈会上指出：“要坚持守正创新，以守正创新的正气和锐气，赓续历史文脉、谱写当代华章。”这一重要论述，为我们推动中华优秀传统文化创造性转化、创新性发展提供了根本遵循。</p>
+                            <p>&nbsp;&nbsp;中国戏曲源远流长、博大精深，具有鲜明的民族特色、独特的魅力和深厚的观众基础，是传承和发展中华优秀传统文化的重要载体之一，是中华民族丰富珍贵的精神文化遗产，在赓续中华文脉中具有重要意义:戏曲是家国历史和民族记忆的载体，体现了中华文明突出的连续性;戏曲是民族艺术的精华，体现了中华文明突出的创新性;戏曲是动人的乡音，是民族情感的纽带之一，体现了中华文明突出的统一性和包容性;戏曲是民族智慧的结晶，承载着中华民族深沉的精神追求，体现了中华文明突出的和平性。
+                            </p>
+                            <p>&nbsp;&nbsp;传承和弘扬戏曲艺术，重在发掘戏曲中爱国主义、英雄主义、家国情怀、民族情怀等精神内涵，重在展现戏曲艺术中中华审美文化的独特风采，重在展示戏曲艺术所体现的中华文化雅俗共赏、丰富多彩的样貌，体现我国传统文化、古老戏曲在当今文化大繁荣中的创造性转化与创新性发展。传承和弘扬戏曲艺术，重在发掘戏曲中爱国主义、英雄主义、家国情怀、民族情怀等精神内涵，重在展现戏曲艺术中中华审美文化的独特风采，重在展示戏曲艺术所体现的中华文化雅俗共赏、丰富多彩的样貌，体现我国传统文化、古老戏曲在当今文化大繁荣中的创造性转化与创新性发展。
+                            </p>
+                        </div>
+                        <div class="in-body-footer"></div>
+                    </div>
+                </a>
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/越剧红楼梦漫化.png')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                            <h2>戏曲艺术传承发展，守正还要创新</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;事实上，传承和弘扬戏曲艺术的工作，正在如火如荼地展开。比如，从国家层面推广的戏曲进校园活动，激发了无数青少年对戏曲的兴趣；比如文旅部去年出台的《曲艺传承发展计划》，对曲艺类非物质文化遗产工作进行了专项部署；又比如继《中国诗词大会》之后，央视又推出《中国戏曲大会》，成为又一道全民文化大餐。
+                            </p>
+            
+                            <p>&nbsp;&nbsp;繁荣发展戏曲事业，关键在人。培养造就大批德艺双馨的戏曲人才，尤其要注重编剧和表演人才培养，要建立一支编、导、音、美、演门类齐全的创作表演人才队伍和现代管理人才队伍。纵观古今中外戏剧史，戏剧的鼎盛时期剧作家都发挥了重要作用。比如，豫剧领域的樊粹庭、杨兰春。樊粹庭给豫剧留下了一批经典剧目，在提升当时豫剧的文学性、豫剧演出的规范性、培养豫剧人才等方面，作出了较大贡献。豫剧《朝阳沟》是杨兰春的代表作，他对河南豫剧院三团风格的确立起到了重要作用。剧本乃一剧之“本”，演员乃舞台“中心”。曹禺戏剧文学奖、中国戏剧梅花奖的设立正符合了戏剧发展的这一规律。一批又一批优秀剧作家、中青年戏剧演员在获得曹禺戏剧文学奖、中国戏剧梅花奖后走向更广阔的舞台，逐渐成为当代中国戏剧艺术各剧种的领军人物和骨干力量，为中国戏剧事业的传承发展作出了重要贡献。
+                            </p>
+            
+                            <p>&nbsp;&nbsp;衡量一个时代的文艺成就最终要看作品。传统戏曲谱写当代华章，首先就是要创作出一批与新时代相匹配的高峰之作，不断满足人民群众日益增长的精神文化需求。这就要求创作者坚持“三并举”原则，现代戏、新编历史剧、整理改编传统戏齐头并进；坚持守正创新，在遵循戏曲美学精神和创作规律基础上，融入时代精神、现代理念和当代科技成果，推动与时代发展相适应、与现代社会相协调、与人类情感相融通、与观众审美相契合的创造性转化、创新性发展。在坚守戏曲本体的基础上，吸收借鉴现代元素，追求古老戏曲与当代艺术的有机结合、东方神韵与现代精神的高度统一、乡土文化与都市审美的和谐兼容，在传统与现代的碰撞交融中，探索戏曲发展的创新之路。
+                            </p>
+                        </div>
+                        <div class="in-body-footer"></div>
+                    </div>
+                </a>
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/背景1.png')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                            <h2>戏曲创新需要找到正确的打开方式</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;如今的传统文化热、国潮出圈等文化现象，都是年轻人文化自信的表现。戏曲是中国传统文化的结晶，也在年轻人的手里，开始以另一种方式热了起来。很多人曾为戏曲的前途担忧，但今日中国之青年给了戏曲发展新的希望，赋予了戏曲新的传承。用年轻的人话来说：“原来我不是不喜欢戏曲，而是不喜欢原来的表达方式”。我们都知道传承的重要性，但传承不等于守旧，长久的传承离不开创新，戏曲的发展历程也是一个不断创新的过程。
+                            </p>
+            
+                            <p>&nbsp;&nbsp;元宵节前夕，年轻人聚集的B站播出了一场以戏曲为特色的元宵晚会《上元千灯会》，晚会由中国戏剧家协会作为特别支持单位，既有孟广禄、王佩瑜这样的京剧表演艺术家参与，也有大量年轻人和戏曲爱好者共同出演，采用京剧、昆曲、豫剧、评剧、秦腔、越剧、黄梅戏等戏曲元素，将传统戏曲表演同影视化表现跨界融合。作为一个典型案例，这体现出传统文化创新的新风采和新腔调。
+                            </p>
+            
+                            <p>&nbsp;&nbsp;近年来随着传统文化的崛起，国潮出圈，大量的年轻人开始关注戏曲，他们又从好玩的角度来看戏曲了，这股新鲜力量让戏曲重新找到了初心和新的传承。B站的戏曲元宵晚会，年轻人们就“玩”得很精彩，新意满满。他们以“蒸面灯”这一传统元宵习俗为引，将舞剧《五星出东方》、京剧演员王佩瑜和歌手阿兰演唱的《燕归巢》、昆曲《牡丹亭》与花滑《小小》跨界混搭、13个小朋友演唱《鳌山小绝》等有机融合在了一起，把各种元素都“玩”起来了，赋予了戏曲一种全新的面貌。
+                            </p>
+                        </div>
+                        <div class="in-body-footer"></div>
+                    </div>
+                </a>
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/国潮墨镜.png')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                            <!-- <h2>从“小众雅玩”到“国潮新宠”</h2> -->
+                             <h2>从小众圈层到大众突围：戏曲国潮化的流量“入圈”解码</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;近年来，抖音、快手、微信视频号等数字平台正成为戏曲“出圈”的新阵地。2022年抖音戏曲直播数据显示，全年开播超80万场，吸引超25亿人次观看，覆盖231个剧种。在抖音发起的“谁说戏曲不抖音”活动中，京剧名家王珮瑜展示京剧老生开怀大笑、阴笑、冷笑、暗笑等不同笑法，吸引超13万人录制短视频互动；越剧演员陈丽君凭借《新龙门客栈》“雌雄莫辨”的古偶气质风潮“圈粉”无数；有着66年历史的黄梅戏老剧团在抖音开播3个月，便收获近60万粉丝，点赞超过300万……在短视频传播中，一批戏曲演员实现了从“圈内名角”到“全民偶像”的身份转换。
+                            </p>
+            
+                            <p>&nbsp;&nbsp;数字平台以迎合年轻人审美的表达方式、沉浸式的参与体验，以年轻人的语言讲好故事，在创新中实现传统艺术的当代传承，为戏曲插上了时尚的翅膀，实现了从小众圈层到大众市场的突围。</p>
+                        </div>
+                        <div class="in-body-footer"></div>
+
+                    </div>
+                </a>
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/背景.jpg')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                            <h2>AI修复“经典”：看数字技术如何让传承新生</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;今年初，由文化和旅游部艺术发展中心联合腾讯发起的“当科技遇见戏曲之美”活动拉开“中国戏曲文化数字焕新行动”的序幕，展现了数字技术赋能戏曲传承的巨大潜力。通过AI修复技术，昔日的老胶片在数字技术的“魔法”中焕发新彩，梅兰芳等戏曲大师的珍贵表演影像重获新生，再现了一代宗师的风采。与传统人工修复相比，AI修复在效率、精度、一致性等方面都具有显著优势，为大规模影像修复提供了可能。
+                            </p>
+                            <p>&nbsp;&nbsp;以20世纪50年代的戏曲片《天仙配》修复为例，AI模型通过学习人物面部特征，重现了五官细节和皱纹、发丝的生动质感。《花木兰》《古城会》等经典剧目也通过AI修复，再现了鲜活的艺术形象和情感表达。据悉，在“中国戏曲文化数字焕新行动”中，首批修复的50部作品涵盖京剧、昆曲、越剧、川剧等10多个剧种，体现了AI修复在戏曲影像数字化传承中的广阔应用前景。
+                            </p>
+                            <p>&nbsp;&nbsp;数字技术为戏曲影像的数字化保护和传承开辟了新途径，它不仅为抢救、修复濒危胶片提供了高效手段，也为戏曲研究、教学、普及提供了丰富、立体、鲜活的数字化资源。随着智能算法的不断优化，AI修复有望在色彩还原、声音修复、情感分析等方面实现更多突破，为经典戏曲呈现全新的数字化形象。正如梅兰芳先生所言：“移步不换形”，戏曲艺术需要与时俱进、推陈出新。戏需易代，人当自新，在科技与艺术的交相辉映中，数字修复正在推动戏曲经典焕发新的生命力，让传统艺术在当代绽放“青春律动”。
+                            </p>
+                        </div>
+                        <div class="in-body-footer"></div>
+                
+                    </div>
+                </a>
+                <a class="in">
+                    <div class="header">
+                        <div class="header-image" style="background-image: url('images/fashion/风中穆桂英（背景）.webp')">
+                        </div>
+                    </div>
+                    <div class="in-content">
+                        <div class="in-body-title">
+                        <h2>沉浸式观演升级：打造现象级戏曲“爆款”IP</h2>
+                        </div>
+                        <div class="in-body">
+                            <p>&nbsp;&nbsp;沉浸式体验通过多感官参与，调动观众的情感与认知，营造“在场”的临场感，这与戏曲追求的“以情带景，以景渲情”的意境不谋而合。而沉浸式舞台恰能放大这种互动效果，将观众“带入”戏境，实现情感与意境的共鸣。近年来，越来越多的戏曲院团开始拥抱数字智慧舞台，利用VR/AR、全息投影等技术，营造身临其境的沉浸式体验。以新编越剧《新龙门客栈》为例，全景式舞台打破“两厢式”界限，让观众化身“剧中人”近距离互动。先进的舞台机械和多媒体技术，营造出变幻莫测的奇幻江湖。据统计，《新龙门客栈》这几年已演出超140场，非传统越剧观众占比高达70%，收获空前的口碑与人气。沉浸式舞台正在重塑观演想象，展现出其在吸引多主体观众、拓展影响力等方面的巨大潜力。
+                            </p>
+                            <p>&nbsp;&nbsp;事实上，戏曲院团借助数字科技，开创智慧舞台新范式，或许将成为未来戏曲演出的“标配”。如京剧《梅妃》运用6DoF技术让“惊鸿舞”360度呈现；昆曲《牡丹亭》用全息投影营造梦幻意境；孪生数字人“梅兰芳”在虚拟舞台复活经典唱段；秦腔虚拟数字人“秦筱雅”带给大众关于秦腔的新认知……当虚拟与现实无缝切换、当历史与现实有机融合，一场酣畅淋漓的视听盛宴跃然眼前，令人目不暇接。
+                            </p>
+                            <p>&nbsp;&nbsp;
+                                有别于银幕的隔离感，数字技术打破了观演的“第四面墙”
+                                ，营造出身临其境之感。在这个“魔幻的空间”里，演员的一颦一笑、一招一式都无比立体鲜活，仿佛触手可及；观众也从被动接受到主动参与，时而化身“穿越者”探寻情节、时而与虚拟形象互动对话，实现情感与意境的共鸣。可以说，随着观演新范式的发展，智慧舞台以沉浸式、体验式的观演模式打造出现象级戏曲“爆款”，实现了对多元受众的吸引与留存。
+                            </p>
+                        </div>
+                        <div class="in-body-footer"></div>
+                
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+
+        $("#nav-1 a").on("click", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav-1 .slide1").css({ opacity: 1, left: +position.left, width: width });
+        });
+
+        $("#nav-1 a").on("mouseover", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav-1 .slide2").css({
+                opacity: 1, left: +position.left, width: width
+            }).addClass("squeeze");
+        });
+
+        $("#nav-1 a").on("mouseout", function () {
+            $("#nav-1 .slide2").css({ opacity: 0 }).removeClass("squeeze");
+        });
+
+        var currentWidth = $("#nav-1")
+            .find("li:nth-of-type(3)")
+            .width(); // logo 所在的 li
+        var current = $("li:nth-of-type(3)").position();
+        $("#nav-1 .slide1").css({ left: +current.left, width: currentWidth });
+        // banner
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        // 卡片点击
+        $(document).ready(function () {
+            // 初始化显示第一个内容
+            $('.detail').first().addClass('active').css('opacity', 1);
+
+            $('.box').click(function () {
+                var target = $(this).data('target'); // 获取目标内容 ID
+
+                // 隐藏所有内容
+                $('.detail').removeClass('active').css('opacity', 0).css('transform', 'translateY(-20px)');
+
+                // 显示目标内容
+                $('#' + target).addClass('active').css('opacity', 1).css('transform', 'translateY(0)');
+
+                // 切换活动状态
+                $('.box').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+        // 文化特征图片微动
+        var limits = 15.0;
+        $(".card1").mousemove(function (e) {
+            var rect = e.target.getBoundingClientRect();
+            var x = e.clientX - rect.left; //x position within the element.
+            var y = e.clientY - rect.top; //y position within the element.
+            var offsetX = x / rect.width;
+            var offsetY = y / rect.height;
+
+            var rotateY = (offsetX) * (limits * 2) - limits;
+            var rotateX = (offsetY) * (limits * 2) - limits;
+
+            var shadowOffsetX = (offsetX) * 32 - 16;
+            var shadowOffsetY = (offsetY) * 32 - 16;
+
+            $(this).css({
+                "box-shadow": (1 / 6) * -shadowOffsetX + "px " + (1 / 6) * -shadowOffsetY + "px 3px rgba(0, 0, 0, 0.051), " +
+                    (2 / 6) * -shadowOffsetX + "px " + (2 / 6) * -shadowOffsetY + "px 7.2px rgba(0, 0, 0, 0.073), " +
+                    (3 / 6) * -shadowOffsetX + "px " + (3 / 6) * -shadowOffsetY + "px 13.6px rgba(0, 0, 0, 0.09), " +
+                    (4 / 6) * -shadowOffsetX + "px " + (4 / 6) * -shadowOffsetY + "px 24.3px rgba(0, 0, 0, 0.107), " +
+                    (5 / 6) * -shadowOffsetX + "px " + (5 / 6) * -shadowOffsetY + "px 45.5px rgba(0, 0, 0, 0.129), " +
+                    -shadowOffsetX + "px " + -shadowOffsetY + "px 109px rgba(0, 0, 0, 0.18)",
+                transform: "perspective(1000px) rotateX(" + -rotateX + "deg) rotateY(" + rotateY + "deg)"
+            });
+
+            var glarePos = rotateX + rotateY + 90;
+            $(this)
+                .children()
+                .children()
+                .css("left", glarePos + "%");
+        });
+
+        $(".card1").mouseleave(function (e) {
+            $(".card").css({ "box-shadow": "0px 0px 3px rgba(0, 0, 0, 0.051), 0px 0px 7.2px rgba(0, 0, 0, 0.073), 0px 0px 13.6px rgba(0, 0, 0, 0.09), 0px 0px 24.3px rgba(0, 0, 0, 0.107), 0px 0px 45.5px rgba(0, 0, 0, 0.129), 0px 0px 109px rgba(0, 0, 0, 0.18)", "transform": "scale(1.0)" });
+            $(".glare").css("left", "100%");
+        });
+        // 脸谱点击
+        jQuery(document).ready(function ($) {
+            $('ul.card-stacks').on('click', function () {
+                $(this).toggleClass('transition');
+            });
+        });
+        // 剧种介绍
+         var getslide = $('.main-box1 li').length - 1;
+
+            var slidecal = 30 / getslide + '%';
+
+            $('.box1').css({ "width": slidecal });
+
+            $('.box1').click(function () {
+                $('.box1').removeClass('active');
+                $(this).addClass('active');
+            });
+            // 传承创新
+            var inherit = document.getElementsByClassName("in");
+
+                var toggleinherit = function () {
+
+                    if ($(this).hasClass('open')) {
+                        $(this).removeClass('open');
+                        $('.in').removeClass('faded');
+                    } else {
+                        $('.in').removeClass('open');
+                        $(this).addClass('open');
+                        $(this).removeClass('faded');
+                        $('.in').not($(this)).addClass('faded');
+                    }
+
+                    $('body, html').animate({
+                        scrollTop: $(this).offset().top
+                    }, 500)
+                };
+
+                for (var i = 0; i < inherit.length; i++) {
+                    var clickEvent = (function () {
+                        if ('ontouchstart' in document.documentElement === true) {
+                            return 'touchstart';
+                        }
+                        else {
+                            return 'click';
+                        }
+                    })();
+                    inherit[i].addEventListener(clickEvent, toggleinherit, false);
+                }
+
+
+                var clickEvent = (function () {
+                    if ('ontouchstart' in document.documentElement === true) {
+                        return 'touchstart';
+                    }
+                    else {
+                        return 'click';
+                    }
+                })();
+    </script>
+</body>
+
+</html>
